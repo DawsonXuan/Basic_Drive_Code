@@ -14,10 +14,17 @@ public class Robot extends IterativeRobot {
 
 	Joystick joy = new Joystick(0);
 	
+	Encoder enc = new Encoder (0 ,4);
+	
 	@Override
 	public void teleopInit(){
 		motorSecondLeft.set(ControlMode.Follower, 1);
 		motorSecondRight.set(ControlMode.Follower, 4);
+		
+		enc.reset();
+		enc.setDistancePerPulse(0.2 * 360/2048 * 4 * Math.PI);
+		
+		enc.getDistance();
 	}
 	
 	@Override
